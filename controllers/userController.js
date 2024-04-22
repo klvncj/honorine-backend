@@ -1,12 +1,12 @@
 const userModel = require("../models/User.model")
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 exports.createUser = async (req, res) => {
     try {
         const { fullname, email, password } = req.body;
-        const encpwd = await bcrypt.hash(password, 10)
+        // const encpwd = await bcrypt.hash(password, 10)
 
-        const user = await userModel.create({ fullname, email, password: encpwd })
+        const user = await userModel.create({ fullname, email, password })
         res.status(201).json({ user });
     } catch (error) {
         res.status(500).json({ error })
